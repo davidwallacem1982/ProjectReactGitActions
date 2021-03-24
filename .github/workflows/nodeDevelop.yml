@@ -1,0 +1,24 @@
+name: Node.js Package Develop
+on:
+  pull_request:
+    branches: [develop]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v1
+        with:
+          always-auth: true
+          node-version: "12.x"
+          registry-url: "https://registry.npmjs.org"
+          # registry-url: "https://registry.yarnpkg.com"
+          # Defaults to the user or organization that owns the workflow file
+          scope: "@octocat"
+      - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+      - run: yarn
+      - run: yarn test --coverage --passWithNoTests
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

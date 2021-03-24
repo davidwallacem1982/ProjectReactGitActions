@@ -1,7 +1,8 @@
 name: Node.js Package Develop
 on:
-  pull_request:
+  push:
     branches: [develop]
+    
 jobs:
   build:
     runs-on: ubuntu-latest

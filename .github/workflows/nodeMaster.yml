@@ -13,7 +13,12 @@ jobs:
           always-auth: true
           node-version: "12.x"
           registry-url: "https://registry.npmjs.org"
-          # registry-url: "https://registry.yarnpkg.com"
+      - uses: actions/cache@v1
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-s${{ hashFiles(format('{0}{1}',github.workspace,'/yarn.lock')) }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
           # Defaults to the user or organization that owns the workflow file
           scope: "@octocat"
       - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc

@@ -5,7 +5,7 @@ Esse projeto foi criado para estudos de de uma aplicação em React usando o Ver
 ## Link do Projeto postado no Vercel
 
 Aqui você encontra um projeto que foi postado no [Vercel](https://vercel.com) então é só você
-clicar aqui nesse [link](https://projectreact-pzl2220io-davidwallacem1982.vercel.app/) para abrir o projeto postado;
+clicar aqui nesse [link](https://react-git-actions.vercel.app/) para abrir o projeto postado;
 
 ## Usuário para logar no projeto
 
